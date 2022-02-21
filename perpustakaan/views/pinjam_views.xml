@@ -11,7 +11,8 @@
                     <field name="siswa_id"/>
                     <field name="buku_id"/>
                     <field name="tanggal_pinjam"/>
-                    <field name="tanggal_kembali"/>
+                    <field name="batas_waktu_pengembalian"/>
+                    <field name="tanggal_dikembalikan"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -35,7 +36,8 @@
                                 <field name="siswa_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="buku_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="tanggal_pinjam" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-                                <field name="tanggal_kembali" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="batas_waktu_pengembalian" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="tanggal_dikembalikan" readonly="1" force_save="1"/>
                             </group>
                         </group>
                     </sheet>
@@ -63,6 +65,5 @@
         name="Daftar Peminjam Buku" 
         parent="perpustakaan_menu_root" action="perpustakaan_pinjam_action" 
         sequence="30"/>
-
     </data>
 </odoo>

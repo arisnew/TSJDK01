@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -24,18 +25,22 @@ class Pinjam(models.Model):
         required=True
     )
 
-    tanggal_kembali = fields.Date(
-        string='Tanggal Kembali', 
-        default=fields.Datetime.now(),
+    batas_waktu_pengembalian = fields.Date(
+        string='Batas Waktu Pengembalian', 
+        default=fields.Datetime.now()+timedelta(days=1),
         required=True
+    )
+
+    tanggal_dikembalikan = fields.Date(
+        string='Tanggal Dikembalikan',
     )
     
 
-    @api.constrains('tanggal_pinjam', 'tanggal_kembali')
+    @api.constrains('tanggal_pinjam', 'batas_waktu_pengembalian')
     def _check_tanggal(self):
         for r in self:
-            if r.tanggal_kembali < r.tanggal_pinjam:
-                raise ValidationError("Tanggal kembali tidak boleh lebih kecil dari tanggal pinjam")
+            if r.batas_waktu_pengembalian <= r.tanggal_pinjam:
+                raise ValidationError("Tanggal kembali tidak boleh lebih kecil atau sama dengan dari tanggal pinjam")
 
     # Draft, Dipinjam, Dikembalikan, batal
     state = fields.Selection(
@@ -55,7 +60,7 @@ class Pinjam(models.Model):
     def action_done(self):
         # Validasi dulu
         # Manipulasi dulu
-        self.write({'state': 'done'})
+        self.write({'state': 'done','tanggal_dikembalikan': fields.Datetime.now()})
 
     def action_cancel(self):
         # Validasi dulu
