@@ -35,7 +35,7 @@
 
         <!-- perpustakaan.buku action window -->
         <record id="perpustakaan_buku_action" model="ir.actions.act_window">
-            <field name="name">perpustakaan.buku.action</field>
+            <field name="name">Buku</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">perpustakaan.buku</field>
             <field name="view_mode">tree,form</field>

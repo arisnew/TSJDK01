@@ -17,6 +17,19 @@
             </field>
         </record>
 
+        <record id="res_partner_search_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherit.view.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <field name="parent_id" position='after'>
+                    <filter string="Siswa" name="siswa" domain="[('siswa', '=', True)]"/>
+                </field>
+                
+            </field>
+        </record>
+
         <!-- res.partner SISWA action window -->
         <record id="siswa_action_window" model="ir.actions.act_window">
             <field name="name">Siswa</field>

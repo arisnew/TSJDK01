@@ -45,7 +45,7 @@
 
         <!-- perpustakaan_pinjam action window -->
         <record id="perpustakaan_pinjam_action" model="ir.actions.act_window">
-            <field name="name">perpustakaan_pinjam_action</field>
+            <field name="name">Daftar Peminjam Buku</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">perpustakaan.pinjam</field>
             <field name="view_mode">tree,form</field>
@@ -60,7 +60,7 @@
 
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="perpustakaan_pinjam_menu_act" 
-        name="Pinjam" 
+        name="Daftar Peminjam Buku" 
         parent="perpustakaan_menu_root" action="perpustakaan_pinjam_action" 
         sequence="30"/>
 
