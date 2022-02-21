@@ -28,6 +28,7 @@
         'views/menu.xml',
         'views/buku_views.xml',
         'views/siswa_views.xml',
+        'views/pinjam_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

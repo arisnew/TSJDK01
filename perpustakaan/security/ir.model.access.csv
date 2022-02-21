@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_perpustakaan_buku,access_perpustakaan_buku,model_perpustakaan_buku,,1,1,1,1
+access_perpustakaan_pinjam,access_perpustakaan_pinjam,model_perpustakaan_pinjam,,1,1,1,1

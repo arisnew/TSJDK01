@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- perpustakaan.pinjam tree view -->
+        <record id="perpustakaan_pinjam_view_tree" model="ir.ui.view">
+            <field name="name">perpustakaan.pinjam.view.tree</field>
+            <field name="model">perpustakaan.pinjam</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="siswa_id"/>
+                    <field name="buku_id"/>
+                    <field name="tanggal_pinjam"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="perpustakaan_pinjam_view_form" model="ir.ui.view">
+            <field name="name">perpustakaan.pinjam.view.form</field>
+            <field name="model">perpustakaan.pinjam</field>
+            <field name="arch" type="xml">
+                <form string="">                   
+                    <header>
+                        <button type="object" name="action_confirm" string="Confirm" class="btn-primary" states="draft"/>
+                        <button type="object" name="action_done" string="Done" class="btn-primary" states="confirm"/>
+                        <button type="object" name="action_cancel" string="Cancel" class="btn-danger" confirm="Yakin mau cancel data ini?" states="confirm,done"/>
+                        <button type="object" name="action_reset" string="Reset to Draft" class="btn-danger" confirm="Yakin mau reset data ini?" states="cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="siswa_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="buku_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="tanggal_pinjam" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- perpustakaan_pinjam action window -->
+        <record id="perpustakaan_pinjam_action" model="ir.actions.act_window">
+            <field name="name">perpustakaan_pinjam_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">perpustakaan.pinjam</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Buat pinjaman baru...
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="perpustakaan_pinjam_menu_act" 
+        name="Pinjam" 
+        parent="perpustakaan_menu_root" action="perpustakaan_pinjam_action" 
+        sequence="30"/>
+
+    </data>
+</odoo>
