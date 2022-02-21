@@ -24,10 +24,10 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        # 'views/menu.xml',
-        # 'views/buku_views.xml',
-        # 'views/siswa_views.xml',
+        'security/ir.model.access.csv',
+        'views/menu.xml',
+        'views/buku_views.xml',
+        'views/siswa_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
