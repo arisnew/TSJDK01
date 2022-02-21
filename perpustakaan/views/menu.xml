@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <menuitem id="perpustakaan_menu_root" name="Perpustakaan" sequence="20"/>
+        <menuitem id="perpustakaan_master_menu_categ" name="Data Master" parent="perpustakaan_menu_root" sequence="20"/>
+    </data>
+</odoo>
