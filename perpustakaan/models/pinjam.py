@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 class Pinjam(models.Model):
     _name = 'perpustakaan.pinjam'
     _description = 'Pinjam Buku'
-
+    _rec_name = "buku_id"
     siswa_id = fields.Many2one(
         comodel_name='res.partner', 
         string='Peminjam',
@@ -71,3 +71,5 @@ class Pinjam(models.Model):
         # Validasi dulu
         # Manipulasi dulu
         self.write({'state': 'draft'})
+
+    
