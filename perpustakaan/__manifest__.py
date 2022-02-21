@@ -29,6 +29,7 @@
         'views/buku_views.xml',
         'views/siswa_views.xml',
         'views/pinjam_views.xml',
+        'report/report_pinjam.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
