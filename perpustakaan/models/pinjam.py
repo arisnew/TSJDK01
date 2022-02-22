@@ -1,6 +1,6 @@
 from datetime import date, timedelta
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 class Pinjam(models.Model):
     _name = 'perpustakaan.pinjam'
@@ -72,4 +72,8 @@ class Pinjam(models.Model):
         # Manipulasi dulu
         self.write({'state': 'draft'})
 
-    
+    def unlink(self):
+        for r in self:
+            if r.state not in ('draft', 'cancel'):
+                raise UserError('Kamu tidak bisa menghapus pinjaman yang sudah dikonfirmasi.')
+        return super(Pinjam, self).unlink()
